@@ -11,7 +11,7 @@ router.post("/", PurifyBodyRequest, async (req, res) => {
       const isMatric = await Student.findOne({ matric, course });
       if (!isMatric) return res.status(404).send({ error: "not found" }); // if no matric found
 
-      res.send("verified"); // if matric exists
+      res.send({user: isMatric}); // if matric exists
    } catch (error) {
       console.log(error);
       res.status(500).send("Internal Server Error");

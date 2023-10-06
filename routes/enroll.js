@@ -5,7 +5,7 @@ const Student = require("../model/students");
 const router = express.Router();
 
 router.post("/", PurifyBodyRequest, async (req, res) => {
-   const { matric, course, fullname } = req.body;
+   const { matric, course, fullname, level } = req.body;
    try {
       // check if matric exist
       const isMatric = await Student.findOne({ matric });
@@ -16,6 +16,7 @@ router.post("/", PurifyBodyRequest, async (req, res) => {
          matric,
          course,
          fullname,
+         level,
       });
       await student.save();
       res.send("Enrolled Successfully");

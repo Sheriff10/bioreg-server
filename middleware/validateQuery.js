@@ -5,6 +5,7 @@ const validateQuery = (data) => {
       matric: Joi.string().required(),
       course: Joi.string().required(),
       fullname: Joi.string().optional(),
+      level: Joi.string().optional()
    });
 
    return schema.validate(data);
